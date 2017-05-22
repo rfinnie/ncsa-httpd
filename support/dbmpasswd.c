@@ -19,7 +19,12 @@
 #include <sys/signal.h>
 #include <stdlib.h>
 #include <time.h>
-#include <ndbm.h> 
+#ifdef GDBM_NDBM
+# include <gdbm-ndbm.h>
+#endif /* GDBM_NDBM */
+#ifndef GDBM_NDBM
+# include <ndbm.h>
+#endif /* GDBM_NDBM */
 #include <fcntl.h>
 
 #define LF 10

@@ -14,7 +14,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <ndbm.h>
+#ifdef GDBM_NDBM
+# include <gdbm-ndbm.h>
+#endif /* GDBM_NDBM */
+#ifndef GDBM_NDBM
+# include <ndbm.h>
+#endif /* GDBM_NDBM */
 
 #define MAX_STRING_LEN 256
 

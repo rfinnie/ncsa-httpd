@@ -38,7 +38,12 @@
 #ifdef DBM_SUPPORT
 # ifndef _DBMSUPPORT_H  /* moronic OSs which don't protect their own include */
 #  define _DBMSUPPORT_H  /* files from being multiply included */
-#  include <ndbm.h>
+#  ifdef GDBM_NDBM
+#   include <gdbm-ndbm.h>
+#  endif /* GDBM_NDBM */
+#  ifndef GDBM_NDBM
+#   include <ndbm.h>
+#  endif /* GDBM_NDBM */
 # endif /* _DBMSUPPORT_H */
 #endif /* DBM_SUPPORT */
 #ifdef NIS_SUPPORT

@@ -22,7 +22,12 @@
 #ifdef DBM_SUPPORT
 # ifndef _DBMSUPPORT_H
 #  define _DBMSUPPORT_H
-#  include <ndbm.h>
+#  ifdef GDBM_NDBM
+#   include <gdbm-ndbm.h>
+#  endif /* GDBM_NDBM */
+#  ifndef GDBM_NDBM
+#   include <ndbm.h>
+#  endif /* GDBM_NDBM */
 # endif /* _DBMSUPPORT_H */
 #endif /* DBM_SUPPORT */
 #include "global.h"

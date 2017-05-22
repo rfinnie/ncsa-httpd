@@ -187,7 +187,7 @@ hp-cc:
 	make tar AUX_CFLAGS=-DHPUX CC=cc CFLAGS="-O -Aa" DBM_LIBS=-lndbm
 
 linux:
-	make tar AUX_CFLAGS=-DLINUX CC=gcc CFLAGS=-O2 DBM_LIBS=-lgdbm
+	make tar AUX_CFLAGS="-DLINUX -DGDBM_NDBM" CC=gcc CFLAGS=-O2 DBM_LIBS="-lgdbm -lgdbm_compat" EXTRA_LIBS=-lcrypt
 
 linux2: linux
 linux1: 
