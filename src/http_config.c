@@ -186,7 +186,7 @@ void process_server_config(per_host *host, FILE *cfg, FILE *errors,
   if (!virtual) n=0;
   
   /* Parse server config file. Remind me to learn yacc. */
-  while(!(cfg_getline(l,MAX_STRING_LEN,cfg))) {
+  while(!(cfg_httpd_getline(l,MAX_STRING_LEN,cfg))) {
     ++n;
     if((l[0] != '#') && (l[0] != '\0')) {
       cfg_getword(w,l);
@@ -541,7 +541,7 @@ void process_resource_config(per_host *host, FILE *open, FILE *errors,
 	else return;
     }
   } else cfg = open;
-  while(!(cfg_getline(l,MAX_STRING_LEN,cfg))) {
+  while(!(cfg_httpd_getline(l,MAX_STRING_LEN,cfg))) {
     ++n;
     if((l[0] != '#') && (l[0] != '\0')) {
       cfg_getword(w,l);
@@ -862,7 +862,7 @@ int parse_access_dir(per_request *reqInfo, FILE *f, int line, char or,
 	sec[x].on_deny[i] = NULL;
     }
 
-    while(!(cfg_getline(l,MAX_STRING_LEN,f))) {
+    while(!(cfg_httpd_getline(l,MAX_STRING_LEN,f))) {
         ++n;
         if((l[0] == '#') || (!l[0])) continue;
         cfg_getword(w,l);
@@ -1198,7 +1198,7 @@ int parse_access_dir(per_request *reqInfo, FILE *f, int line, char or,
                 else if(!strcasecmp(w,"DELETE")) m[M_DELETE]=1;
             }
             while(1) {
-                if(cfg_getline(l,MAX_STRING_LEN,f))
+                if(cfg_httpd_getline(l,MAX_STRING_LEN,f))
                     access_syntax_error(reqInfo,n,"Limit missing /Limit",f,file);
                 n++;
                 if((l[0] == '#') || (!l[0])) continue;
@@ -1393,7 +1393,7 @@ void process_access_config(FILE *errors)
         perror("fopen");
         exit(1);
     }
-    while(!(cfg_getline(l,MAX_STRING_LEN,f))) {
+    while(!(cfg_httpd_getline(l,MAX_STRING_LEN,f))) {
         ++n;
         if((l[0] == '#') || (!l[0])) continue;
 	cfg_getword(w,l);

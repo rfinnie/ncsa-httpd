@@ -146,7 +146,7 @@ void init_mime(void)
     forced_types = NULL;
     encoding_types = NULL;
 
-    while(!(cfg_getline(l,MAX_STRING_LEN,f))) {
+    while(!(cfg_httpd_getline(l,MAX_STRING_LEN,f))) {
         if(l[0] == '#') continue;
         cfg_getword(w,l);
         if(!(ct = (char *)malloc(sizeof(char) * (strlen(w) + 1))))

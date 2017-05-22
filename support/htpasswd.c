@@ -45,7 +45,7 @@ void getword(char *word, char *line, char stop) {
     while(line[y++] = line[x++]);
 }
 
-int getline(char *s, int n, FILE *f) {
+int httpd_getline(char *s, int n, FILE *f) {
     register int i=0;
 
     while(1) {
@@ -163,7 +163,7 @@ main(int argc, char *argv[]) {
     strcpy(user,argv[2]);
 
     found = 0;
-    while(!(getline(line,MAX_STRING_LEN,f))) {
+    while(!(httpd_getline(line,MAX_STRING_LEN,f))) {
         if(found || (line[0] == '#') || (!line[0])) {
             putline(tfp,line);
             continue;

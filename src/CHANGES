@@ -13,7 +13,7 @@
 
 Fixes for 1.5.2
 ------------------
-*) Changed getline rfc822 line wrap to check for validity of the next bits
+*) Changed httpd_getline rfc822 line wrap to check for validity of the next bits
    before attempting to see them
 *) Changed imagemap.c so relative URLs actually work
 *) Don't core dump on a method only request

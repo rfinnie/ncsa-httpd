@@ -13,13 +13,13 @@ child_main  			httpd.c
    free
  RequestMain			http_request.c
   signal
-  getline
+  httpd_getline
   setproctitle
   decode_request		http_request.c
    strtok
    MapMethod			http_request.c
    get_mime_headers
-    getline
+    httpd_getline
     strchr
     isspace
     strcasecmp
@@ -73,7 +73,7 @@ child_main  			httpd.c
       stat
       FOpen			fdwrap.c
       parse_access_dir		http_config.c
-       cfg_getline		util.c
+       cfg_httpd_getline		util.c
        access_syntax_error	http_config.c
        cfg_getword		util.c
        add_type			http_mime.c
@@ -151,11 +151,11 @@ child_main  			httpd.c
        add_cgi_vars
        error_log2stderr
        execle/execve
-       getline			util.c
+       httpd_getline			util.c
        write
        read
        scan_script_header	cgi.c
-	getline			util.c
+	httpd_getline			util.c
 	strdup
 	realloc
        waitpid
@@ -167,7 +167,7 @@ child_main  			httpd.c
 	 dump_default_header	http_mime.c
        send_script		cgi.c
 	alarm
-	getline
+	httpd_getline
 	write
 	read
        kill_children		cgi.c

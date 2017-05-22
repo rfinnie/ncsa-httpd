@@ -140,7 +140,7 @@ int get_pw(per_request *reqInfo, char *user, char *pw, security_data* sec)
 
     if (reqInfo->auth_pwfile_type == AUTHFILETYPE_STANDARD) { 	
 	/* From Conrad Damon (damon@netserver.standford.edu), 	 
-	   Don't start cfg_getline loop if auth_pwfile is a directory. */
+	   Don't start cfg_httpd_getline loop if auth_pwfile is a directory. */
 
 	if ((stat (reqInfo->auth_pwfile, &finfo) == -1) ||
 	    (!S_ISREG(finfo.st_mode))) {
@@ -152,7 +152,7 @@ int get_pw(per_request *reqInfo, char *user, char *pw, security_data* sec)
 	    sprintf(errstr,"Could not open user file %s",reqInfo->auth_pwfile);
 	    die(reqInfo,SC_SERVER_ERROR,errstr); 	
 	}
-	while(!(cfg_getline(l,MAX_STRING_LEN,f))) { 	 
+	while(!(cfg_httpd_getline(l,MAX_STRING_LEN,f))) { 	 
 	    if((l[0] == '#') || (!l[0])) 
 		continue; 	 
 	    getword(w,l,':');

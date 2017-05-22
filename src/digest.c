@@ -63,7 +63,7 @@ int get_digest(per_request *reqInfo, char *user, char *realm, char *digest,
 		    reqInfo->auth_digestfile);
 	    die(reqInfo,SC_SERVER_ERROR,errstr);
 	}
-	while(!(cfg_getline(l,MAX_STRING_LEN,f))) {
+	while(!(cfg_httpd_getline(l,MAX_STRING_LEN,f))) {
 	    if((l[0] == '#') || (!l[0])) continue;
 	    getword(w,l,':');
 	    getword(r,l,':');

@@ -2310,7 +2310,7 @@ static int FastCgiDoWork(WS_Request *reqPtr, FastCgiInfo *infoPtr)
 
     if (nFirst) {
       char szBuf[IOBUFSIZE];
-      nBytes=getline(reqPtr->sb, szBuf,IOBUFSIZE,G_FLUSH,0);
+      nBytes=httpd_getline(reqPtr->sb, szBuf,IOBUFSIZE,G_FLUSH,0);
       BufferAddData(infoPtr->reqInbufPtr, szBuf, nBytes);
       if (nBytes > 0) {
 	BufferAddData(infoPtr->reqInbufPtr, szBuf, nBytes);

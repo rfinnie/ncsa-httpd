@@ -267,7 +267,7 @@ int scan_cgi_header(per_request *reqInfo, int pd)
    
   /* ADC put in the G_SINGLE_CHAR option, so that CGI SSI's would work.  
    * it was:
-   * if((ret = getline(reqInfo->cgi_buf,str,HUGE_STRING_LEN-1,0,timeout)) <= 0)
+   * if((ret = httpd_getline(reqInfo->cgi_buf,str,HUGE_STRING_LEN-1,0,timeout)) <= 0)
    *
    * This should be cleaned up perhaps so that it only does this if SSI's are
    * allowed for this script directory.  ZZZZ
@@ -278,7 +278,7 @@ int scan_cgi_header(per_request *reqInfo, int pd)
 #endif /* CGI_SSI_HACK */
 
     while(1) {
-      if((ret = getline(reqInfo->cgi_buf,str,HUGE_STRING_LEN-1,options,timeout)) <= 0)
+      if((ret = httpd_getline(reqInfo->cgi_buf,str,HUGE_STRING_LEN-1,options,timeout)) <= 0)
       {
         char error_msg[MAX_STRING_LEN];
 	Close(pd);
@@ -508,7 +508,7 @@ int cgi_stub(per_request *reqInfo, struct stat *finfo, int allow_options)
       int nDone = 0;
       
       signal(SIGPIPE,SIG_IGN);
-      nBytes=getline(reqInfo->sb, szBuf,HUGE_STRING_LEN,G_FLUSH, timeout);
+      nBytes=httpd_getline(reqInfo->sb, szBuf,HUGE_STRING_LEN,G_FLUSH, timeout);
       nTotalBytes = nBytes;
       if (nBytes >= 0) {
         if (nBytes > 0) write(p2[1], szBuf, nBytes);
@@ -538,10 +538,10 @@ int cgi_stub(per_request *reqInfo, struct stat *finfo, int allow_options)
     }
     
     /* Previously, this was broken because we read the results of the CGI using
-     * getline, but the SSI parser used buffered stdio.
+     * httpd_getline, but the SSI parser used buffered stdio.
      * 
      * ADC changed scan_cgi_header so that it uses G_SINGLE_CHAR when it
-     * calls getline.  Yes, this means pitiful performance for CGI scripts.
+     * calls httpd_getline.  Yes, this means pitiful performance for CGI scripts.
      */
     /* Fine, parse the output of CGI scripts.  Talk about useless
      * overhead. . .
@@ -620,7 +620,7 @@ long send_fd(per_request *reqInfo, int pd, void (*onexit)(void))
 
     alarm(timeout);
     if (reqInfo->cgi_buf != NULL)
-      n=getline(reqInfo->cgi_buf, buf,IOBUFSIZE,G_FLUSH,timeout);
+      n=httpd_getline(reqInfo->cgi_buf, buf,IOBUFSIZE,G_FLUSH,timeout);
      else 
       n = 0;
     while (1) {
