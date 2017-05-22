@@ -8,7 +8,7 @@ CC= gcc
 #For debugging
 CFLAGS= -g
 
-RM= /bin/rm -f
+RM= rm -f
 #--- You shouldn't have to edit anything else. ---
 
 .c.o: 

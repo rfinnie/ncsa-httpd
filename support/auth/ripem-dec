@@ -15,7 +15,7 @@ SECKEY=/X11/robm/httpd/htauth/.key-private
 # Set this to the password to your secret key
 KEYPASS=mypassword
 # Set this to the location of your RIPEM executable
-RIPEMBIN=/usr/local/bin/ripem
+RIPEMBIN=ripem
 
 # That should be all you need to edit.
 

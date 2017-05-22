@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FINGER=/usr/ucb/finger
+FINGER=finger
 
 echo Content-type: text/html
 echo

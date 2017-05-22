@@ -8,7 +8,7 @@ PGPPATH=/X11/robm/httpd/support/auth/pgp-keys
 # Set this to your user name, the name on your secret key
 PGPUSER=webmaster@hoohoo.ncsa.uiuc.edu
 # Set this to the full path to the PGP binary on your system
-PGPBIN=/usr/local/bin/pgp
+PGPBIN=pgp
 
 
 # You shouldn't need to look at the rest of this mess
@@ -37,4 +37,4 @@ cd /tmp
 
 $PGPBIN -f -u $PGPUSER < /tmp/pgp.$$/request 2> /dev/null
 
-/bin/rm -rf /tmp/pgp.$$
+rm -rf /tmp/pgp.$$

@@ -181,7 +181,7 @@ main(int argc, char *argv[]) {
 
     if (!atleastonequery) printf("<B>You did not enter a query!</B>%c",LF);
     else {
-        strcpy(commandstr, "/usr/local/bin/ph -m ");
+        strcpy(commandstr, "/usr/bin/env ph -m ");
         if (strlen(serverstr)) {
            strcat(commandstr, " -s ");
            /* RM 2/22/94 oops */

@@ -6,7 +6,7 @@ CC= gcc
 # For ANSI compilers
 #CC= cc
 
-RM= /bin/rm -f
+RM= rm -f
 
 #For Optimization
 #CFLAGS= -O2

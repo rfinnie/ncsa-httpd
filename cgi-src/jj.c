@@ -228,7 +228,7 @@ main(int argc, char *argv[]) {
 
     if(allow) {
         char t[256];
-        sprintf(t,"/bin/mail %s",JJ_FAX);
+        sprintf(t,"/usr/bin/env mail %s",JJ_FAX);
         if(!(order=popen(t,"w")))
             print_error("the server was unable to open a pipe to mail");
         printf("<TITLE>Order Sent</TITLE>%c",LF);

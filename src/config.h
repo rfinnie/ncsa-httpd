@@ -142,7 +142,7 @@
 /* DEFAULT_PATH defines the default search PATH handed to CGI scripts
    if there isn't one in the environment when HTTPd runs */
 
-#define DEFAULT_PATH "/bin:/usr/bin:/usr/ucb:/usr/bsd:/usr/local/bin:."
+#define DEFAULT_PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 /* The following define default values for options which can be over-
    ridden at run time via command-line or configuration files */

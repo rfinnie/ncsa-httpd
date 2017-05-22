@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/env perl
 #
 # Non-parsed headers CGI 1.1 error script in Perl to handle error requests
 # from NCSA HTTPd 1.4 via ErrorDocument.  This should handle all errors in 

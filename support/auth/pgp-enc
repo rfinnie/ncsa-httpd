@@ -7,7 +7,7 @@ PGPPASS=mypassword
 # Set this to wherever you keep your secret and public keys
 PGPPATH=/X11/robm/httpd/support/auth/pgp-keys
 # Set this to the location of the PGP binary on your system
-PGPBIN=/usr/local/bin/pgp
+PGPBIN=pgp
 
 # You shouldn't need to edit anything under this line
 

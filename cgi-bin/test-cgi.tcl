@@ -1,4 +1,4 @@
-#!/usr/local/bin/tclsh
+#!/usr/bin/env tclsh
 # tcl-cgi.tcl
 # robert.bagwill@nist.gov, no warranty, no rights reserved
 # print out command line args, stdin, and environment variables

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-UPTIME=/usr/ucb/uptime
+UPTIME=uptime
 
 echo Content-type: text/plain
 echo

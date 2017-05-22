@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/env perl
 #
 # wais.pl -- WAIS search interface
 #
@@ -10,7 +10,7 @@
 #     map topdir wais.pl &do_wais($top, $path, $query, "database", "title")
 #
 
-$waisq = "/usr/local/bin/waisq";
+$waisq = "waisq";
 $waisd = "/u/Web/wais-sources";
 $src = "www";
 $title = "NCSA httpd documentation";
