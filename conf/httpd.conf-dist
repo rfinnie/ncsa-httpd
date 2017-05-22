@@ -97,14 +97,14 @@ Group nogroup
 # Default: If you do not specify a ServerName, HTTPd attempts to retrieve
 #	   it through system calls.
 
-#ServerName new.host.name
+ServerName localhost
 
 # ServerAdmin: Your address, where problems with the server should be
 # e-mailed.
 # Valid within <VirtualHost>
 # Default: <none> (or DEFAULT_ADMIN)
 
-ServerAdmin you@your.address
+ServerAdmin nobody@localhost
 
 #===========================================================================
 # File Locations
@@ -261,9 +261,9 @@ DNSMode Standard
 # You can also specify an error level with this setting, by denoting the 
 # VirtualHost as Optional or Required.
 
-<VirtualHost 127.0.0.1 Optional>
-DocumentRoot /local
-ServerName localhost.ncsa.uiuc.edu
-ResourceConfig conf/localhost_srm.conf
-</VirtualHost>
+#<VirtualHost 127.0.0.1 Optional>
+#DocumentRoot /local
+#ServerName localhost.ncsa.uiuc.edu
+#ResourceConfig conf/localhost_srm.conf
+#</VirtualHost>
 

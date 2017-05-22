@@ -149,7 +149,7 @@
 
 #define HTTPD_ROOT "/usr/local/etc/httpd"
 
-#define DOCUMENT_LOCATION "/usr/local/etc/httpd/htdoc"
+#define DOCUMENT_LOCATION "/usr/local/etc/httpd/htdocs"
 #define DEFAULT_ADMIN "[no address given]"
 
 #define SERVER_CONFIG_FILE "conf/httpd.conf"
