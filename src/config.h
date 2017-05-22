@@ -158,8 +158,8 @@
 #define ACCESS_CONFIG_FILE "conf/access.conf"
 
 #define DEFAULT_PORT 80
-#define DEFAULT_USER "#-1"
-#define DEFAULT_GROUP "#-1"
+#define DEFAULT_USER "nobody"
+#define DEFAULT_GROUP "nogroup"
 
 #define DEFAULT_XFERLOG "logs/access_log"
 #define DEFAULT_AGENTLOG "logs/agent_log"
