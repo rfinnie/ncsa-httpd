@@ -62,22 +62,22 @@ ultrix:
 	make all CC=gcc
 
 post-query: post-query.o util.o
-	$(CC) post-query.o util.o -o ../cgi-bin/post-query
+	$(CC) post-query.o util.o -o ../cgi-bin/post-query $(LDFLAGS)
 
 query: query.o util.o
-	$(CC) query.o util.o -o ../cgi-bin/query
+	$(CC) query.o util.o -o ../cgi-bin/query $(LDFLAGS)
 
 imagemap: imagemap.o
-	$(CC) imagemap.o -o ../cgi-bin/imagemap
+	$(CC) imagemap.o -o ../cgi-bin/imagemap $(LDFLAGS)
 
 jj: jj.o util.o
-	$(CC) jj.o util.o -o ../cgi-bin/jj
+	$(CC) jj.o util.o -o ../cgi-bin/jj $(LDFLAGS)
 
 phf: phf.o util.o
-	$(CC) phf.o util.o -o ../cgi-bin/phf
+	$(CC) phf.o util.o -o ../cgi-bin/phf $(LDFLAGS)
 
 change-passwd: change-passwd.o util.o
-	$(CC) change-passwd.o util.o -o ../sec-cgi/change-passwd
+	$(CC) change-passwd.o util.o -o ../sec-cgi/change-passwd $(LDFLAGS)
 
 clean:
 	rm -f *.o ../cgi-bin/post-query ../cgi-bin/query ../sec-cgi/change-passwd ../cgi-bin/phf ../cgi-bin/jj ../cgi-bin/imagemap

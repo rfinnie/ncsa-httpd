@@ -83,19 +83,19 @@ ultrix:
 	make all CC=gcc CFLAGS="-DULTRIX"
 
 htpasswd: htpasswd.c
-	$(CC) $(CFLAGS) $(INCLUDES) htpasswd.c -o htpasswd $(EXTRA_LIBS)
+	$(CC) $(CFLAGS) $(INCLUDES) htpasswd.c -o htpasswd $(LDFLAGS) $(EXTRA_LIBS)
 
 dbmpasswd: dbmpasswd.c
-	$(CC) $(CFLAGS) $(INCLUDES) dbmpasswd.c -o dbmpasswd $(EXTRA_LIBS)
+	$(CC) $(CFLAGS) $(INCLUDES) dbmpasswd.c -o dbmpasswd $(LDFLAGS) $(EXTRA_LIBS)
 
 dbmgroup: dbmgroup.c
-	$(CC) $(CFLAGS) $(INCLUDES) dbmgroup.c -o dbmgroup $(EXTRA_LIBS)
+	$(CC) $(CFLAGS) $(INCLUDES) dbmgroup.c -o dbmgroup $(LDFLAGS) $(EXTRA_LIBS)
 
 std2dbm: std2dbm.c
-	$(CC) $(CFLAGS) $(INCLUDES) std2dbm.c -o std2dbm $(EXTRA_LIBS)
+	$(CC) $(CFLAGS) $(INCLUDES) std2dbm.c -o std2dbm $(LDFLAGS) $(EXTRA_LIBS)
 
 dbm2std: dbm2std.c
-	$(CC) $(CFLAGS) $(INCLUDES) dbm2std.c -o dbm2std $(EXTRA_LIBS)
+	$(CC) $(CFLAGS) $(INCLUDES) dbm2std.c -o dbm2std $(LDFLAGS) $(EXTRA_LIBS)
 
 
 DIGESTOBJS=../src/md5.o ../src/md5c.o
@@ -106,19 +106,19 @@ DIGESTOBJS=../src/md5.o ../src/md5c.o
 	$(CC) $(CFLAGS) $(INCLUDES) -c ../src/md5c.c -o ../src/md5c.o 
 
 htdigest: $(DIGESTOBJS) htdigest.o  ../src/md5.h
-	$(CC) $(CFLAGS) -o htdigest htdigest.o $(DIGESTOBJS) $(EXTRA_LIBS)
+	$(CC) $(CFLAGS) -o htdigest htdigest.o $(DIGESTOBJS) $(LDFLAGS) $(EXTRA_LIBS)
 
 dbmdigest: $(DIGESTOBJS) dbmdigest.o ../src/md5.h
-	$(CC) $(CFLAGS) -o dbmdigest dbmdigest.o $(DIGESTOBJS) $(EXTRA_LIBS)
+	$(CC) $(CFLAGS) -o dbmdigest dbmdigest.o $(DIGESTOBJS) $(LDFLAGS) $(EXTRA_LIBS)
 
 unescape: unescape.c
-	$(CC) $(CFLAGS) $(INCLUDES) unescape.c -o unescape
+	$(CC) $(CFLAGS) $(INCLUDES) unescape.c -o unescape $(LDFLAGS)
 
 inc2shtml: inc2shtml.c
-	$(CC) $(CFLAGS) $(INCLUDES) inc2shtml.c -o inc2shtml
+	$(CC) $(CFLAGS) $(INCLUDES) inc2shtml.c -o inc2shtml $(LDFLAGS)
 
 webgrab: webgrab.c
-	$(CC) $(CFLAGS) $(INCLUDES) webgrab.c -o webgrab $(EXTRA_LIBS)
+	$(CC) $(CFLAGS) $(INCLUDES) webgrab.c -o webgrab $(LDFLAGS) $(EXTRA_LIBS)
 clean:
 	rm -f $(SUPPORT) $(DIGESTOBJS) tags TAGS *.o
 

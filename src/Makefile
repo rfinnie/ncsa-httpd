@@ -75,7 +75,7 @@ EXTRA_LIBS=
 
 # Place here any flags you may need upon linking, such as a flag to
 # prevent dynamic linking (if desired)
-LFLAGS=  # -pg -DPROFILE
+LDFLAGS=  # -pg -DPROFILE
 
 # AUX_CFLAGS are system-specific control flags.
 # NOTE: IF YOU DO NOT CHOOSE ONE OF THESE, EDIT portability.h AND CHOOSE
@@ -223,22 +223,22 @@ ultrix:
 	make tar AUX_CFLAGS=-DULTRIX CC=gcc CFLAGS=-O2
 
 httpd: $(OBJS)
-	$(CC) $(LFLAGS) -o httpd $(OBJS) $(ALL_LIBS)
+	$(CC) $(LDFLAGS) -o httpd $(OBJS) $(ALL_LIBS)
 
 #	-logfile=/X11/blong/httpd/logs/pure_log 
 purify: $(OBJS)
 	$(PURIFY) -program-name=/X11/blong/httpd/src/httpd \
 	          -follow-child-processes=yes \
-	$(CC) $(LFLAGS) -o httpd $(OBJS) $(ALL_LIBS) 
+	$(CC) $(LDFLAGS) -o httpd $(OBJS) $(ALL_LIBS) 
 
 quantify: $(OBJS)
 	$(QUANTIFY) -record-child-process-data=yes \
 		    -record-data=no \
 	            -avoid-recording-system-calls=1,6,93,113,114 \
-	$(CC) $(LFLAGS) -o httpd $(OBJS) $(ALL_LIBS) 
+	$(CC) $(LDFLAGS) -o httpd $(OBJS) $(ALL_LIBS) 
 
 tar: $(OBJS)
-	$(CC) $(LFLAGS) -o ../httpd $(OBJS) $(ALL_LIBS) 
+	$(CC) $(LDFLAGS) -o ../httpd $(OBJS) $(ALL_LIBS) 
 
 
 http_access.o:  Makefile config.h portability.h constants.h http_access.h \
@@ -308,4 +308,4 @@ codecenter:
 	#setopt ansi
 	#setopt print_string 128
 	#setopt load_flags $(ALL_FLAGS) 
-	#load $(LFLAGS) $(SRC) $(ALL_LIBS) 
+	#load $(LDFLAGS) $(SRC) $(ALL_LIBS) 
