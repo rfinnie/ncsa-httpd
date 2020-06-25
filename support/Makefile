@@ -27,7 +27,7 @@ INCLUDES = -I../src
 #--------------------------------------------------------------------------
 
 SUPPORT = htpasswd unescape inc2shtml htdigest dbm2std std2dbm dbmdigest \
-	dbmgroup dbmpasswd webgrab
+	dbmgroup dbmpasswd webgrab auth/uudecode auth/uuencode
 .c.o: 
 	$(CC) -c $(CFLAGS) $(INCLUDES) $<
 
