@@ -37,6 +37,12 @@ hp-cc:
 linux:
 	make all CC=gcc
 
+macos:
+	make all CC=gcc
+
+macos-sysdbm:
+	make all CC=gcc
+
 netbsd:	
 	make all CC=cc
 

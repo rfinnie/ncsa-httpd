@@ -193,6 +193,12 @@ linux2: linux
 linux1: 
 	make tar AUX_CFLAGS="-DLINUX -DFD_LINUX" CC=gcc CFLAGS=-O2 DBM_LIBS=-lgdbm
 
+macos:
+	make tar AUX_CFLAGS="-DLINUX -DNEED_SYS_MALLOC_H -DGDBM_NDBM" CC=gcc CFLAGS=-O2 DBM_LIBS="-lgdbm -lgdbm_compat"
+
+macos-sysdbm:
+	make tar AUX_CFLAGS="-DLINUX -DNEED_SYS_MALLOC_H" CC=gcc CFLAGS=-O2 DBM_LIBS="-ldbm"
+
 netbsd:
 	make tar AUX_CFLAGS=-DNETBSD EXTRA_LIBS=-lcrypt CC=cc CFLAGS=-O2
 

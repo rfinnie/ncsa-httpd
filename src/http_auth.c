@@ -184,7 +184,7 @@ int get_pw(per_request *reqInfo, char *user, char *pw, security_data* sec)
  	dtRec = dbm_fetch(db, dtKey);
  	DBM_Close(db);
  	if (dtRec.dptr) {
-  	    strncpy(pw, dtRec.dptr, dtRec.dsize);
+  	    strncpy(pw, (char *)dtRec.dptr, dtRec.dsize);
             pw[dtRec.dsize] = '\0';
 	    return 1; 	
 	}
@@ -336,7 +336,7 @@ int dbm_group_lookup(per_request *reqInfo, char *user, char *group, DBM *db)
   dtKey.dsize = strlen(group);
   dtRec = dbm_fetch(db, dtKey);
   if (dtRec.dptr) {
-    Found = in_listn(user,dtRec.dptr,dtRec.dsize);
+    Found = in_listn(user,(char *)dtRec.dptr,dtRec.dsize);
   } 
   return Found;
 }

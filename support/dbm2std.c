@@ -36,7 +36,6 @@ int main (int argc, char *argv[])
     datum dtKey, dtRec;
     char rec[MAX_STRING_LEN];
     char key[MAX_STRING_LEN];
-    char *pch1, *pch2;
     int  ndx;
 
     if (argc != 3) 
@@ -58,15 +57,11 @@ int main (int argc, char *argv[])
     for (dtKey = dbm_firstkey(db); dtKey.dptr; dtKey = dbm_nextkey(db)) {
 	dtRec = dbm_fetch (db, dtKey);
 
-	pch1 = key;
-	for (ndx = 0; ndx < dtKey.dsize; ndx++)
-	    *pch1++ = dtKey.dptr[ndx];
-	*pch1 = '\0';
+        strncpy(key, (char *)dtKey.dptr, dtKey.dsize);
+        key[dtKey.dsize] = '\0';
 
-	pch2 = rec;
-	for (ndx = 0; ndx < dtRec.dsize; ndx++)
-	    *pch2++ = dtRec.dptr[ndx];
-	*pch2 = '\0';
+        strncpy(rec, (char *)dtRec.dptr, dtRec.dsize);
+        rec[dtRec.dsize] = '\0';
 
 	printf ("Storing data <%s> with key <%s>\n",
 		rec, key);

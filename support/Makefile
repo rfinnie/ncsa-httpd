@@ -51,6 +51,12 @@ hp-gcc:
 linux:
 	make all CC=gcc CFLAGS="-DLINUX -DGDBM_NDBM" EXTRA_LIBS="-lgdbm -lgdbm_compat -lcrypt"
 
+macos:
+	make all CC=gcc CFLAGS="-DLINUX -DNEED_SYS_MALLOC_H -DGDBM_NDBM" EXTRA_LIBS="-lgdbm -lgdbm_compat"
+
+macos-sysdbm:
+	make all CC=gcc CFLAGS="-DLINUX -DNEED_SYS_MALLOC_H" EXTRA_LIBS="-ldbm"
+
 netbsd: 
 	make all CC=cc CFLAGS="-DNETBSD" EXTRA_LIBS=-lcrypt
 

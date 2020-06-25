@@ -6,6 +6,7 @@ all:
 	@echo Valid types are aix3, aix4, sunos, sgi4, sgi5,  
 	@echo hp-cc, hp-gcc, solaris, netbsd, svr4, linux, 
 	@echo next, ultrix, osf1, aux, bsdi, sco5
+	@echo macos, macos-sysdbm
 	@echo If you do not have one of these systems, you must edit
 	@echo src/Makefile, src/portability.h, src/config.h,
 	@echo cgi-src/Makefile, and support/Makefile
@@ -36,6 +37,12 @@ hp-gcc:
 
 linux:
 	cd src ; make linux ; cd ../cgi-src ; make linux ; cd ../support ; make linux
+
+macos:
+	cd src ; make macos ; cd ../cgi-src ; make macos ; cd ../support ; make macos
+
+macos-sysdbm:
+	cd src ; make macos-sysdbm ; cd ../cgi-src ; make macos-sysdbm ; cd ../support ; make macos-sysdbm
 
 netbsd:
 	cd src ; make netbsd ; cd ../cgi-src ; make netbsd ; cd ../support ; make netbsd

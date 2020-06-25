@@ -7,13 +7,13 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-#ifdef __bsdi__
-# include <sys/malloc.h>
-#else
-# ifndef NeXT
+#ifndef NO_MALLOC_H
+# ifdef NEED_SYS_MALLOC_H
+#  include <sys/malloc.h>
+# else
 #  include <malloc.h>
-# endif
-#endif
+# endif /* NEED_SYS_MALLOC_H */
+#endif /* NO_MALLOC_H */
 
 #include <sys/time.h>
 #include <sys/types.h>

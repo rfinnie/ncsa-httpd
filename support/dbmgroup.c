@@ -131,13 +131,13 @@ void dbm_add_user(DBM *dbmgroup, char *group, char *user) {
   resp = dbm_fetch(dbmgroup,key);
   if (resp.dptr) {
     printf("Adding %s to group %s.\n",user,group);
-    if (resp.dptr[0]) {
+    if (((char *)resp.dptr)[0]) {
       if (!(newusers = (char *)malloc(resp.dsize + strlen(user) + 2))) {
 	fprintf(stderr,"Not enough memory to complete operation.\n");
 	perror("malloc");
 	exit(1);
       }
-      tmp = resp.dptr;
+      tmp = (char *)resp.dptr;
       while ((tmp = strstr(tmp,user))) {
 	if ((tmp[strlen(user)] == '\0') || (tmp[strlen(user)] == ' ') ||
 	    (tmp[strlen(user)] == ',')) {
@@ -145,7 +145,7 @@ void dbm_add_user(DBM *dbmgroup, char *group, char *user) {
 	  exit(0);
 	} else tmp++;
       }
-      strcpy(newusers,resp.dptr);
+      strcpy(newusers,(char *)resp.dptr);
       sprintf(newusers,"%s %s",newusers,user);
       resp.dptr = newusers;
       resp.dsize = strlen(newusers);
@@ -173,13 +173,14 @@ void dbm_del_user(DBM *dbmgroup, char *group, char *user) {
   resp = dbm_fetch(dbmgroup,key);
 
   if (resp.dptr) {
-    if (resp.dptr[0] != '\0') {
-      if (!strcmp(resp.dptr,user)) {
-	resp.dptr[0] = '\0';
+    if (((char *)resp.dptr)[0] != '\0') {
+      tmp = (char *)resp.dptr;
+      if (!strcmp((char *)resp.dptr,user)) {
+        resp.dptr = tmp;
+        tmp[0] = '\0';
 	resp.dsize = 1;
 	dbm_store(dbmgroup,key,resp,DBM_REPLACE);
       } else {
-	tmp = resp.dptr;
 	while ((tmp = strstr(tmp,user))) {
 	  if ((tmp[strlen(user)] == '\0') || (tmp[strlen(user)] == ' ') ||
 	      (tmp[strlen(user)] == ',')) {
@@ -191,9 +192,9 @@ void dbm_del_user(DBM *dbmgroup, char *group, char *user) {
 	  exit(1);
 	}
 	printf("Deleting user %s from group %s.\n",user,group);
-	userlist = (char *)malloc(strlen(resp.dptr) - strlen(user)+1);
-	if (tmp != resp.dptr) {
-	  strncpy(userlist,resp.dptr,tmp-resp.dptr-1);
+	userlist = (char *)malloc(strlen((char *)resp.dptr) - strlen(user)+1);
+	if (tmp != (char *)resp.dptr) {
+	  strncpy(userlist,(char *)resp.dptr,tmp-(char *)resp.dptr-1);
 	  strcat(userlist,(tmp+strlen(user)));
 	} else {
 	  strcpy(userlist,(tmp+strlen(user)));

@@ -107,7 +107,7 @@ int get_digest(per_request *reqInfo, char *user, char *realm, char *digest,
 	dtRec = dbm_fetch(db, dtKey);
 	DBM_Close(db);
 	if (dtRec.dptr) {
-	    strncpy(digest, dtRec.dptr, dtRec.dsize);
+	    strncpy(digest, (char *)dtRec.dptr, dtRec.dsize);
 	    digest[dtRec.dsize] = '\0';
 	    return 1;
 	}
